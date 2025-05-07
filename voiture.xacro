@@ -60,35 +60,35 @@
   <xacro:macro name="chassis_geometry">
     <origin xyz="0.127 0 -0.02" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://course_ros2/urdf/meshes/ChevroletCamaroLight.stl" scale="0.000990 0.0009375 0.0009375"/>
+      <mesh filename="/urdf/meshes/ChevroletCamaroLight.stl" scale="0.000990 0.0009375 0.0009375"/>
     </geometry>
   </xacro:macro>
 
   <xacro:macro name="left_rear_wheel_geometry">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://course_ros2/urdf/meshes/left_wheel.stl" />
+      <mesh filename="/urdf/meshes/left_wheel.stl" />
     </geometry>
   </xacro:macro>
 
   <xacro:macro name="right_rear_wheel_geometry">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://course_ros2/urdf/meshes/right_wheel.stl" />
+      <mesh filename="/urdf/meshes/right_wheel.stl" />
     </geometry>
   </xacro:macro>
 
   <xacro:macro name="left_front_wheel_geometry">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://course_ros2/urdf/meshes/right_wheel.stl" />
+      <mesh filename="/urdf/meshes/right_wheel.stl" />
     </geometry>
   </xacro:macro>
 
   <xacro:macro name="right_front_wheel_geometry">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://course_ros2/urdf/meshes/right_wheel.stl" />
+      <mesh filename="/urdf/meshes/right_wheel.stl" />
     </geometry>
   </xacro:macro>
 
@@ -96,14 +96,14 @@
   <xacro:macro name="left_steering_hinge_geometry">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://course_ros2/urdf/meshes/hinge.stl" />
+      <mesh filename="/urdf/meshes/hinge.stl" />
     </geometry>
   </xacro:macro>
 
   <xacro:macro name="right_steering_hinge_geometry">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://course_ros2/urdf/meshes/hinge.stl" />
+      <mesh filename="/urdf/meshes/hinge.stl" />
     </geometry>
   </xacro:macro>
 
@@ -341,7 +341,7 @@
     <visual>
       <origin xyz="0 0 -0.011" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://course_ros2/urdf/meshes/rplidar.stl"/>
+        <mesh filename="/urdf/meshes/rplidar.stl"/>
         <material name="grey" />
       </geometry>
     </visual>
