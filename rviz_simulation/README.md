@@ -72,5 +72,5 @@ ros2 launch simulation_ros2 display.launch.py
 
 If everything works correctly, you should see a view like this:
  
-![Bolide RViz View](https://raw.githubusercontent.com/SU-Bolides/simulation_ros2/main/rviz_output.png)
+![Bolide RViz View](https://raw.githubusercontent.com/SU-Bolides/simulation_ros2/main/rviz_simulation/rviz_output.png)
 
