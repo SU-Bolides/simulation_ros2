@@ -69,10 +69,7 @@ This simulation includes the following devices:
 - IMU / Gyro
 - Rear sonar sensor
 
-For inspiration, refer to:
 
-- [webots_ros2_tesla](https://github.com/cyberbotics/webots_ros2_tesla)
-- [webots_ros2_turtlebot](https://github.com/cyberbotics/webots_ros2_turtlebot)
 
 ## ROS 2 Nodes
 
@@ -106,3 +103,8 @@ This simulation provides a solid foundation for developing more advanced behavio
 Simulation differs from real-world scenarios. Be patient and exercise caution when transitioning to real hardware.
 
 Enjoy exploring and driving!
+
+For inspiration, refer to:
+
+- [webots_ros2_tesla](https://github.com/cyberbotics/webots_ros2_tesla)
+- [webots_ros2_turtlebot](https://github.com/cyberbotics/webots_ros2_turtlebot)
