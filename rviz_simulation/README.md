@@ -17,7 +17,7 @@ cd ~/bolide_ws/src
 2. **Create a new empty package (e.g., bolide_visual):**
 
 ```bash
-ros2 pkg create --build-type ament_python bolide_visual
+ros2 pkg create --build-type ament_cmake bolide_visual
 cd bolide_visual
 ```
 
