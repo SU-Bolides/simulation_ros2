@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<robot name="TT02_jaune">
+    <webots>
+        <plugin type="webot_simulation.voiture_driver.MyRobotDriver" />
+    </webots>
+</robot>

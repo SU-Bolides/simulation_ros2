@@ -1,76 +1,108 @@
-# Bolide RViz Visualization
+# COVAPSy Simulation Environment - Sorbonne Université 2025
 
-This repository contains the necessary files to visualize a bolide model in RViz2.  
-**Note:** This is not a standalone ROS 2 package (no `package.xml` or `CMakeLists.txt`).The cloned folder contains only the URDF, launch, and RViz files. You must wrap it inside a ROS 2 package to build and use it properly.
+This repository contains the simulation component of the COVAPSy course offered at Sorbonne Université in 2025.
 
+## Overview
 
-## Setup Instructions
+This simulation environment is designed to assist students in building, testing, and visualizing robotic control systems, with a focus on autonomous vehicle projects. It includes:
 
-1. **Create a ROS 2 workspace:**
+- URDF files for RViz visualization.
+- Webots simulator integration with ROS 2 using dedicated controller plugins.
+- Multiple STL models of various car bodies for visual customization.
+- Custom ROS 2 nodes to control vehicles and simulate realistic autonomous behavior.
 
-```bash
-mkdir -p ~/bolide_ws/src
-cd ~/bolide_ws/src
-```
+## Installation
 
+To get started, first install Webots by following the official guide:  
+[Webots Installation on Linux](https://cyberbotics.com/doc/guide/installing-webots)
 
-2. **Create a new empty package (e.g., bolide_visual):**
+## File Structure
 
-```bash
-ros2 pkg create --build-type ament_python bolide_visual
-cd bolide_visual
-```
+- `launch/`: Launch files for simulation.
+- `protos/`: Custom Webots PROTO files, including different STL car models.
+- `resource/`: Contains the URDF and configuration files.
+- `webot_simulation/`: Main ROS 2 package, including drivers and controllers.
+- `worlds/`: Contains Webots world files.
+- `test/`: Contains optional test files or tools.
 
-3. **Clone this repository inside the package:**
+## Adding a New World
 
-```bash
-git clone https://github.com/SU-Bolides/simulation_ros2.git
-```
-You should now have the files located at:
-```
-~/bolide_ws/src/bolide_visual/simulation_ros2
-```
+To add a new Webots world:
 
+1. Save the world file in the `worlds/` directory.
+2. Register it in the `data_files` list in `setup.py`:
 
-4. **Modify `package.xml` and `CMakeLists.txt`:**
+    ```python
+    ('share/' + package_name + '/worlds', ['worlds/your_new_world.wbt'])
+    ```
 
-##### Add the following lines to your `package.xml`, after the `<buildtool_depend>` tag:
+3. Set it as the default in the launch file:
 
+    ```python
+    DeclareLaunchArgument(
+         'world',
+         default_value='your_new_world.wbt',
+         description='Choose one of the world files from the `/webot_simulation/world` directory'
+    ),
+    ```
+
+## Adding a New Controller
+
+If you create a new plugin controller that links Webots to ROS 2, update the plugin tag in the URDF file accordingly:
+
+1. Set the plugin path in the URDF like this:
 ```xml
-<exec_depend>joint_state_publisher</exec_depend>
-<exec_depend>robot_state_publisher</exec_depend>
-<exec_depend>rviz</exec_depend>
-<exec_depend>xacro</exec_depend>
-<exec_depend>gazebo_ros</exec_depend>
-<exec_depend>gazebo_ros_control</exec_depend>
+<plugin type="your_package.your_plugin_class"/>
 ```
 
-##### Add the following lines to the bottom of CMakeLists.txt, just before ament_package():
-
-```cmake
-install(DIRECTORY urdf launch
-  DESTINATION share/${PROJECT_NAME}
-)
-
-install(DIRECTORY rviz/
-  DESTINATION share/${PROJECT_NAME}/rviz
-)
-```
-
-5. **Build the workspace:**
-```
-cd ~/bolide_ws
-colcon build --symlink-install
-source install/setup.bash
-```
-
-6. **Launch the RViz visualization:**
+2. Rebuild the project:
 
 ```bash
-ros2 launch simulation_ros2 display.launch.py
+colcon build && source install/setup.bash
 ```
 
-If everything works correctly, you should see a view like this:
- 
-![Bolide RViz View](https://raw.githubusercontent.com/SU-Bolides/simulation_ros2/main/rviz_output.png)
+## Sensors and Devices
 
+This simulation includes the following devices:
+
+- RpLidar A2 (publishes to `/TT02_jaune/RpLidarA2/point_cloud`)
+- IMU / Gyro
+- Rear sonar sensor
+
+For inspiration, refer to:
+
+- [webots_ros2_tesla](https://github.com/cyberbotics/webots_ros2_tesla)
+- [webots_ros2_turtlebot](https://github.com/cyberbotics/webots_ros2_turtlebot)
+
+## ROS 2 Nodes
+
+1. **teleop.py**  
+    Publishes `AckermannDrive` messages to the `/cmd_ackermann` topic. Ackermann messages are used because they are native to car models in Webots. This differs from the `low_level_ros2` approach, which uses `Twist` messages.
+
+2. **obstacle_avoider.py**  
+    Subscribes to the Lidar point cloud and performs basic obstacle avoidance. When an object is detected in front of the vehicle, it stops, reverses briefly, and turns.
+
+## Maps Available
+
+- `piste_enscopy.wbt`: A replica of the ENS 2023 track.
+- `circular_piste.wbt`: A circular loop for testing.
+
+To create your own maps, refer to the [Webots Map Creation Tutorial](https://cyberbotics.com/doc/guide/tutorial-4-appearance).
+
+## Future Directions
+
+This simulation provides a solid foundation for developing more advanced behaviors. Future goals include:
+
+- Reinforcement Learning-based navigation
+- Autonomous driving research
+
+### Recommended Learning Resources
+
+- TurtleBot3 DRL Navigation
+- F1Tenth Reinforcement Learning
+
+## Final Notes
+
+Simulation differs from real-world scenarios. Be patient and exercise caution when transitioning to real hardware.
+
+Enjoy exploring and driving!
