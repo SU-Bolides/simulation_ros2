@@ -27,7 +27,7 @@ To get started, first install Webots by following the official guide:
 
 ## Setting up the interface between Webots and ROS2
 
-Please refer to this tutorial [Webot_ROS2_interface](Webot_ROS2_interface.md) for more details.
+Please refer to this tutorial [Webot_ROS2_interface](https://github.com/SU-Bolides/simulation_ros2/blob/main/webots_simulation/Webot_ROS2_interface.md) for more details.
 
 ## Adding a New World
 
