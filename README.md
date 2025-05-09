@@ -25,6 +25,10 @@ To get started, first install Webots by following the official guide:
 - `worlds/`: Contains Webots world files.
 - `test/`: Contains optional test files or tools.
 
+## Setting up the interface between Webots and ROS2
+
+Please refer to this tutorial [Webot_ROS2_interface](Webot_ROS2_interface.md) for more details.
+
 ## Adding a New World
 
 To add a new Webots world:
