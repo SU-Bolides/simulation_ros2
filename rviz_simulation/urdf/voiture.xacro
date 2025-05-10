@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
-
+<!-- ===================================================================================                                  -->
+<!-- |    This xarco file is used with gazebo classic in mind, so launching it in gz sim (ignition) won't work            | -->
+<!-- |    Use this link to migrate from gz classic to gz sim                                                              | -->
+<!-- |     https://ibrahimmansur4.medium.com/migrating-from-gazebo-classic-to-gazebo-sim-a-practical-guide-804af2011011   | -->
+<!-- ===================================================================================                                    -->
 
 
 <robot name="voiture_simulation" xmlns:xacro="http://www.ros.org/wiki/xacro">
@@ -94,6 +98,11 @@
   </xacro:macro>
 
 <!-- i have no clue why we are using the hinge but let's leave it for now, we might acquire more wisdom in the following days  -->
+<!-- Update: I understand now. The hinge joint is used to constrain the rotation of the front wheels.
+     Without it, the wheels would rotate freely in all directions (x, y, z), which is physically incorrect.
+     The hinge allows the wheels to rotate only around a specific axis (e.g., the y-axis), like in a real car,
+     where the wheel spins forward/backward but not sideways or upwards.
+     It also ensures the wheel is properly attached to the chassis and rotates realistically. -->
   <xacro:macro name="left_steering_hinge_geometry">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
@@ -625,6 +634,15 @@
       </sensor>
     </gazebo>
   </xacro:unless> -->
+
+
+  <!-- webots plugin-->
+
+  <webots>
+    <plugin type="voiture_simulation.webot_driver.MyRobotDriver" />
+  </webots>
+
+
 
   <material name="black">
     <color rgba="0.0 0.0 0.0 1.0"/>

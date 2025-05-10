@@ -8,14 +8,16 @@ import os
 
 def generate_launch_description():
     xacro_file = PathJoinSubstitution([
-        FindPackageShare("voiture_simulation"),
+        FindPackageShare("rviz_simulation"),
         "urdf",
         "voiture.xacro"
     ])
 
-
-    pkg_share = get_package_share_directory('voiture_simulation')
-    rviz_config_path = os.path.join(pkg_share, 'rviz', 'bolide_viewer.rviz')
+    rviz_config_path = PathJoinSubstitution([
+    FindPackageShare("rviz_simulation"),
+    "config",
+    "bolide_viewer.rviz"
+    ])
 
     return LaunchDescription([
         Node(

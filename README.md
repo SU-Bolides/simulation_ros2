@@ -99,8 +99,8 @@ This simulation provides a solid foundation for developing more advanced behavio
 
 ### Recommended Learning Resources
 
-- TurtleBot3 DRL Navigation
-- F1Tenth Reinforcement Learning
+- [TurtleBot3 DRL Navigation](https://github.com/tomasvr/turtlebot3_drlnav/tree/main)
+- [F1Tenth Reinforcement Learning](https://github.com/MichaelBosello/f1tenth-RL?tab=readme-ov-file) 
 
 ## Final Notes
 
