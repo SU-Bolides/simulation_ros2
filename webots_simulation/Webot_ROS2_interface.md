@@ -200,7 +200,7 @@ By following these steps, your launch file will be properly configured to integr
     ```python
     data_files = []
     data_files.append(('share/ament_index/resource_index/packages', ['resource/' + package_name]))
-```
+    ```
 
 for every launch file do this 
 ```python
